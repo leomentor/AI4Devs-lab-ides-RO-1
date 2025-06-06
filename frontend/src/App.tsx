@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { CandidateForm } from './components/CandidateForm';
+import { CandidateList } from './components/CandidateList';
 import './App.css';
 
 function App() {
+  const handleSuccess = () => {
+    alert('Candidato creado exitosamente');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Registro de Candidatos</h1>
+      <CandidateForm onSuccess={handleSuccess} />
+      <hr className="my-8" />
+      <CandidateList />
     </div>
   );
 }

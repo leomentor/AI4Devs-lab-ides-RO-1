@@ -14,7 +14,24 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Candidate {
+  id              Int      @id @default(autoincrement())
+  firstName       String
+  lastName        String
+  email           String   @unique
+  phone           String?
+  address         String?
+  education       Json[]   // Array of education objects
+  workExperience  Json[]   // Array of work experience objects
+  cvUrl           String?
+  status          String   @default("NEW") // NEW, IN_REVIEW, CONTACTED, INTERVIEWED, HIRED, REJECTED
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
